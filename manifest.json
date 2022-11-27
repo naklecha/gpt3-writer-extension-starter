@@ -1,6 +1,6 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write your first song in the style of your favorite artist anywhere!",
+  "name": "Shopping list generator",
+  "description": "Create a shopping list based on what you want to cook today.",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -11,6 +11,16 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate song"
-  }
+    "default_title": "Generate Shopping List"
+  },
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+	"permissions": ["contextMenus", "tabs", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
